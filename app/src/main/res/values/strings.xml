@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">VST</string>
+
+    <string name="login">Login</string>
+    <string name="create_an_account">Create an account</string>
+    <string name="vitamin_stack_tracker">Vitamin Stack Tracker</string>
+    <string name="username">username</string>
+    <string name="password">password</string>
+    <string name="cancel">cancel</string>
+    <string name="admin">admin</string>
+    <string name="admin_area">Admin Panel</string>
+    <string name="logout">logout</string>
+</resources>
