@@ -8,7 +8,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,10 +37,16 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         }
+        // Set text view for animations
+        TextView vstTextView = findViewById(R.id.vstTextView);
 
-        // Set button click listeners
-        Button loginButton = findViewById(R.id.loginButton);
-//        Button createAccountButton = findViewById(R.id.createAccountButton);
+        Animation fadeInAnimation = AnimationUtils.loadAnimation(this, R.anim.fade_in);
+        vstTextView.startAnimation(fadeInAnimation);
+        // Set button click listeners and animations
+        Button loginButton = findViewById(R.id.mloginButton);
+        Button createAccountButton = findViewById(R.id.createAccountButton);
+        loginButton.startAnimation(fadeInAnimation);
+        createAccountButton.startAnimation(fadeInAnimation);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,13 +56,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-//        createAccountButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(MainActivity.this, CreateAccountActivity.class);
-//                startActivity(intent);
-//            }
-//        });
+        createAccountButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void getDatabase() {

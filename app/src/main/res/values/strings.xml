@@ -10,4 +10,6 @@
     <string name="admin">admin</string>
     <string name="admin_area">Admin Panel</string>
     <string name="logout">logout</string>
+    <string name="register">Register</string>
+    <string name="register_account">Register Account</string>
 </resources>

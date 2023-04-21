@@ -17,17 +17,23 @@
         android:textColor="@color/black"
         android:textStyle="bold"
         android:textSize="32sp"
-        app:layout_constraintBottom_toTopOf="@+id/loginButton"
+        android:fontFamily="sans-serif-light"
+        android:shadowColor="@color/gray"
+        android:shadowDx="3"
+        android:shadowDy="3"
+        android:shadowRadius="2"
+        app:layout_constraintBottom_toTopOf="@+id/mloginButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/loginButton"
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/mloginButton"
         android:layout_width="206dp"
         android:layout_height="101dp"
         android:layout_marginTop="4dp"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="@color/indigo"
         android:textSize="32sp"
         android:text="@string/login"
         android:textColor="@color/white"
@@ -35,19 +41,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/vstTextView" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/createAccountButton"
         android:layout_width="207dp"
         android:layout_height="76dp"
         android:layout_marginTop="4dp"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="@color/indigo"
         android:text="@string/create_an_account"
         android:textColor="@color/white"
-        android:textSize="20dp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginButton" />
+        app:layout_constraintTop_toBottomOf="@+id/mloginButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 

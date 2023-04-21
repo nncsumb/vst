@@ -1,5 +1,6 @@
 package nathan.csumb.vst;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -47,6 +48,7 @@ public class LandingPageActivity extends AppCompatActivity {
                 mUser = mvstDAO.getUserByUserId(userId);
 
                 runOnUiThread(new Runnable() {
+                    @SuppressLint("SetTextI18n")
                     @Override
                     public void run() {
                         mWelcomeTextView.setText("Welcome, " + mUser.getUserName() + "!");
