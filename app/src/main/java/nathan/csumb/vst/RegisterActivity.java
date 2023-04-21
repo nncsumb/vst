@@ -72,7 +72,7 @@ public class RegisterActivity extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(RegisterActivity.this, "Username already exists.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Username already exists.", Toast.LENGTH_SHORT).show();
                         }
                     });
                     return;
@@ -84,7 +84,7 @@ public class RegisterActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(RegisterActivity.this, "User registered successfully.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "User registered successfully.", Toast.LENGTH_SHORT).show();
                     }
                 });
 

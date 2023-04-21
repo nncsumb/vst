@@ -19,6 +19,7 @@ public class LandingPageActivity extends AppCompatActivity {
 
     private TextView mWelcomeTextView;
     private TextView mAdminTextView;
+    private Button mSettingsButton;
     private Button mAdminAreaButton;
     private Button mLogoutButton;
 
@@ -35,6 +36,7 @@ public class LandingPageActivity extends AppCompatActivity {
         mWelcomeTextView = findViewById(R.id.welcomeTextView);
         mAdminTextView = findViewById(R.id.adminTextView);
         mAdminAreaButton = findViewById(R.id.adminAreaButton);
+        mSettingsButton = findViewById(R.id.settingsButton);
         mLogoutButton = findViewById(R.id.logoutButton);
 
         getDatabase();
@@ -65,10 +67,20 @@ public class LandingPageActivity extends AppCompatActivity {
             }
         }).start();
 
+        mSettingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = SettingsActivity.intentFactory(getApplicationContext());
+                startActivity(intent);
+                finish();
+            }
+        });
         mAdminAreaButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: navigate to admin area
+                Intent intent = AdminActivity.intentFactory(getApplicationContext());
+                startActivity(intent);
+                finish();
             }
         });
 

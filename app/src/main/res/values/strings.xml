@@ -12,4 +12,13 @@
     <string name="logout">logout</string>
     <string name="register">Register</string>
     <string name="register_account">Register Account</string>
+    <string name="admin_panel">Admin Panel</string>
+    <string name="admin_controls">Admin Controls</string>
+    <string name="confirm_deletion">Confirm Deletion</string>
+    <string name="delete_user">Delete User</string>
+    <string name="add_profile_picture">Add Profile Picture</string>
+    <string name="delete_account">Delete Account</string>
+    <string name="settings">Settings</string>
+    <string name="delete_user_account">Delete Account</string>
+    <string name="confirm_username">Confirm Username</string>
 </resources>

@@ -5,79 +5,67 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center"
     android:background="@drawable/logo"
-    tools:context="nathan.csumb.vst.LandingPageActivity">
+    tools:context="nathan.csumb.vst.SettingsActivity">
 
     <TextView
-        android:id="@+id/welcomeTextView"
+        android:id="@+id/settings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
-        android:textSize="24sp"
+        android:layout_marginTop="100dp"
+        android:text="@string/settings"
+        android:textColor="@color/black"
+        android:textSize="32sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/settingsButton"
+        android:id="@+id/s_profilePicButton"
         android:layout_width="176dp"
         android:layout_height="70dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="16dp"
         android:backgroundTint="@color/indigo"
         android:elevation="2dp"
         android:fontFamily="sans-serif-medium"
-        android:text="@string/settings"
+        android:text="@string/add_profile_picture"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
-        app:layout_constraintTop_toBottomOf="@+id/welcomeTextView"
+        app:layout_constraintEnd_toEndOf="@+id/settings"
+        app:layout_constraintStart_toStartOf="@+id/settings"
+        app:layout_constraintTop_toBottomOf="@+id/settings"  />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/s_deleteButton"
+        android:layout_width="174dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="4dp"
+        android:backgroundTint="@color/indigo"
+        android:elevation="2dp"
+        android:fontFamily="sans-serif"
+        android:text="@string/delete_account"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@+id/s_profilePicButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/logoutButton"
-        android:layout_width="176dp"
+        android:id="@+id/s_cancelButton"
+        android:layout_width="174dp"
         android:layout_height="70dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="4dp"
         android:backgroundTint="@color/indigo"
         android:elevation="2dp"
-        android:fontFamily="sans-serif-medium"
-        android:text="@string/logout"
+        android:fontFamily="sans-serif"
+        android:text="@string/cancel"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
-        app:layout_constraintTop_toBottomOf="@+id/settingsButton"
+        app:layout_constraintTop_toBottomOf="@+id/s_deleteButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
-
-    <TextView
-        android:id="@+id/adminTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
-        android:text="@string/admin_panel"
-        android:textColor="@color/black"
-        android:textSize="32sp"
-        android:textStyle="bold"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logoutButton" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/adminAreaButton"
-        android:layout_width="176dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="10dp"
-        android:backgroundTint="@color/indigo"
-        android:elevation="2dp"
-        android:fontFamily="sans-serif-medium"
-        android:text="@string/admin_controls"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@+id/adminTextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
