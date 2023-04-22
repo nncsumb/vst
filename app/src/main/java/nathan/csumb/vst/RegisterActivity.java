@@ -23,6 +23,12 @@ public class RegisterActivity extends AppCompatActivity {
 
     private vstDAO mvstDAO;
 
+    public static Intent intentFactory(Context context) {
+        Intent intent = new Intent(context, RegisterActivity.class);
+
+        return intent;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,7 +84,7 @@ public class RegisterActivity extends AppCompatActivity {
                     return;
                 }
 
-                User newUser = new User(false,userName, password);
+                User newUser = new User(false, userName, password);
                 mvstDAO.insert(newUser);
                 int userId = mvstDAO.getUserByUsername(userName).getUserId();
                 runOnUiThread(new Runnable() {
@@ -104,16 +110,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void getDatabase() {
-        mvstDAO = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DB_NAME)
-                .allowMainThreadQueries()
-                .build()
-                .getvstDAO();
-    }
-
-    public static Intent intentFactory(Context context) {
-        Intent intent = new Intent(context, RegisterActivity.class);
-
-        return intent;
+        mvstDAO = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DB_NAME).allowMainThreadQueries().build().getvstDAO();
     }
 }
 

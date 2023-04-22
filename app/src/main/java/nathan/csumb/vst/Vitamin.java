@@ -3,8 +3,6 @@ package nathan.csumb.vst;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import java.util.Arrays;
-
 import nathan.csumb.vst.db.AppDatabase;
 
 @Entity(tableName = AppDatabase.VITAMIN_TABLE)

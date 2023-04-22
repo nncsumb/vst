@@ -15,9 +15,4 @@ public abstract class AppDatabase extends RoomDatabase {
 
     public abstract vstDAO getvstDAO();
 
-    public void clearAllData() {
-        // Clear all tables in the database
-        clearAllTables();
-    }
-
 }

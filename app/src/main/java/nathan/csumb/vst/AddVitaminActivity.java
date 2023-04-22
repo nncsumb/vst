@@ -1,6 +1,5 @@
 package nathan.csumb.vst;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -25,6 +24,11 @@ public class AddVitaminActivity extends AppCompatActivity {
     private EditText mDescriptionEditText;
     private Spinner mTimeSpinner;
     private EditText mQuantityEditText;
+
+    public static Intent intentFactory(Context context) {
+        Intent intent = new Intent(context, AddVitaminActivity.class);
+        return intent;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,9 +55,8 @@ public class AddVitaminActivity extends AppCompatActivity {
                 int quantity = 0;
                 try {
                     quantity = Integer.parseInt(mQuantityEditText.getText().toString());
-                }
-                catch (Exception NumberFormatException){
-                    quantity =0;
+                } catch (Exception NumberFormatException) {
+                    quantity = 0;
                 }
 
 
@@ -62,7 +65,7 @@ public class AddVitaminActivity extends AppCompatActivity {
                     return;
                 }
 
-                if (quantity == 0){
+                if (quantity == 0) {
                     mQuantityEditText.setError("Quantity is required");
                     return;
                 }
@@ -91,15 +94,7 @@ public class AddVitaminActivity extends AppCompatActivity {
     }
 
     private void getDatabase() {
-        mvstDAO = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DB_NAME)
-                .allowMainThreadQueries()
-                .build()
-                .getvstDAO();
-    }
-
-    public static Intent intentFactory(Context context) {
-        Intent intent = new Intent(context, AddVitaminActivity.class);
-        return intent;
+        mvstDAO = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DB_NAME).allowMainThreadQueries().build().getvstDAO();
     }
 }
 

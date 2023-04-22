@@ -9,6 +9,12 @@ import android.widget.Button;
 
 public class SettingsActivity extends Activity {
 
+    public static Intent intentFactory(Context context) {
+        Intent intent = new Intent(context, SettingsActivity.class);
+
+        return intent;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,12 +48,6 @@ public class SettingsActivity extends Activity {
                 startActivity(intent);
             }
         });
-    }
-
-    public static Intent intentFactory(Context context){
-        Intent intent = new Intent(context, SettingsActivity.class);
-
-        return intent;
     }
 }
 

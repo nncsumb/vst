@@ -23,17 +23,25 @@ public class LandingPageActivity extends AppCompatActivity {
     private Button mVitaminStackButton;
     private Button mAdminAreaButton;
     private Button mLogoutButton;
+    private QuantityNotification mQuantityNotification;
 
     private vstDAO mvstDAO;
     private SharedPreferences mSharedPreferences;
 
     private User mUser;
 
+    public static Intent intentFactory(Context context) {
+        Intent intent = new Intent(context, LandingPageActivity.class);
+
+        return intent;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing);
-
+        mQuantityNotification = new QuantityNotification(this);
+        mQuantityNotification.start();
         mWelcomeTextView = findViewById(R.id.welcomeTextView);
         mAdminAreaButton = findViewById(R.id.adminAreaButton);
         mSettingsButton = findViewById(R.id.settingsButton);
@@ -72,10 +80,7 @@ public class LandingPageActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Replace the existing fragment, if any, with the VitaminListFragment
                 VitaminListFragment vitaminListFragment = new VitaminListFragment();
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_container, vitaminListFragment)
-                        .addToBackStack(null)
-                        .commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, vitaminListFragment).addToBackStack(null).commit();
             }
         });
         mAddVitaminButton.setOnClickListener(new View.OnClickListener() {
@@ -117,17 +122,9 @@ public class LandingPageActivity extends AppCompatActivity {
             }
         });
     }
+
     private void getDatabase() {
-        mvstDAO = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DB_NAME)
-                .allowMainThreadQueries()
-                .build()
-                .getvstDAO();
-    }
-
-    public static Intent intentFactory(Context context){
-        Intent intent = new Intent(context, LandingPageActivity.class);
-
-        return intent;
+        mvstDAO = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DB_NAME).allowMainThreadQueries().build().getvstDAO();
     }
 }
 

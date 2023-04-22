@@ -6,11 +6,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/logo"
+    android:scrollbarAlwaysDrawHorizontalTrack="true"
+    android:scrollbarThumbHorizontal="@string/admin"
     tools:context="nathan.csumb.vst.LandingPageActivity">
     <com.google.android.material.button.MaterialButton
         android:id="@+id/adminAreaButton"
         android:layout_width="70dp"
-        android:layout_height="35dp"
+        android:layout_height="48dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="5dp"
         android:backgroundTint="@color/indigo"

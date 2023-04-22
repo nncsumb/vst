@@ -2,11 +2,9 @@ package nathan.csumb.vst;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
-import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,15 +13,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.text.BreakIterator;
 import java.util.List;
 
-import nathan.csumb.vst.Vitamin;
-
 public class VitaminAdapter extends RecyclerView.Adapter<VitaminAdapter.VitaminViewHolder> {
-    private List<Vitamin> vitamins;
-    private Context context;
-    private OnVitaminClickListener onVitaminClickListener;
+    private final List<Vitamin> vitamins;
+    private final Context context;
+    private final OnVitaminClickListener onVitaminClickListener;
 
     public VitaminAdapter(Context context, List<Vitamin> vitamins, OnVitaminClickListener onVitaminClickListener) {
         this.context = context;
@@ -49,13 +44,11 @@ public class VitaminAdapter extends RecyclerView.Adapter<VitaminAdapter.VitaminV
         holder.vitaminDescription.setText(spannableDescription);
         holder.vitaminQuantity.setText(String.valueOf(vitamin.getQuantity()));
         holder.vitaminQuantityLabel.setText("QTY");
-        if (vitamin.getTime().equals("Morning")){
+        if (vitamin.getTime().equals("Morning")) {
             holder.vitaminTime.setText("☀️");
-        }
-        else if (vitamin.getTime().equals("Night")){
+        } else if (vitamin.getTime().equals("Night")) {
             holder.vitaminTime.setText("🌙");
-        }
-        else {
+        } else {
             holder.vitaminTime.setText("🌇");
         }
     }
@@ -63,6 +56,10 @@ public class VitaminAdapter extends RecyclerView.Adapter<VitaminAdapter.VitaminV
     @Override
     public int getItemCount() {
         return vitamins.size();
+    }
+
+    public interface OnVitaminClickListener {
+        void onVitaminClick(int position);
     }
 
     public static class VitaminViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -89,11 +86,7 @@ public class VitaminAdapter extends RecyclerView.Adapter<VitaminAdapter.VitaminV
             onVitaminClickListener.onVitaminClick(getAdapterPosition());
         }
     }
-
-    public interface OnVitaminClickListener {
-        void onVitaminClick(int position);
-    }
-    }
+}
 
 
 

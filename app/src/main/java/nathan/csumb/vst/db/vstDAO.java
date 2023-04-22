@@ -15,7 +15,7 @@ import nathan.csumb.vst.Vitamin;
 public interface vstDAO {
 
     @Insert
-    void insert(User...users);
+    void insert(User... users);
 
     @Update
     void update(User... users);
@@ -30,13 +30,14 @@ public interface vstDAO {
     User getUserByUserId(int userId);
 
     @Insert
-    void insert(Vitamin...vitamins);
+    void insert(Vitamin... vitamins);
 
     @Update
-    void update(Vitamin...vitamins);
+    void update(Vitamin... vitamins);
 
     @Delete
-    void delete(Vitamin...vitamins);
+    void delete(Vitamin... vitamins);
+
     @Query("SELECT * FROM " + AppDatabase.VITAMIN_TABLE + " WHERE vitaminId = :vitaminId ")
     Vitamin getVitaminsById(int vitaminId);
 
@@ -57,6 +58,12 @@ public interface vstDAO {
 
     @Query("SELECT * FROM " + AppDatabase.VITAMIN_TABLE + " WHERE userId = :userId AND time = :timeString AND name = :nameString")
     Vitamin getVitaminsByName(int userId, String timeString, String nameString);
+
+    @Query("DELETE FROM " + AppDatabase.USER_TABLE)
+    void deleteAllUsers();
+
+    @Query("DELETE FROM " + AppDatabase.VITAMIN_TABLE)
+    void deleteAllVitamins();
 
 
 }

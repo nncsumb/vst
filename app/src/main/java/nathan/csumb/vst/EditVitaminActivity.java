@@ -25,6 +25,11 @@ public class EditVitaminActivity extends Activity {
     private EditText mQuantityEditText;
     private int mVitaminId;
 
+    public static Intent intentFactory(Context context) {
+        Intent intent = new Intent(context, AddVitaminActivity.class);
+        return intent;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +44,7 @@ public class EditVitaminActivity extends Activity {
         mQuantityEditText = findViewById(R.id.quantityEditText);
         mNameEditText.setText(editVitamin.getName());
         mDescriptionEditText.setText(editVitamin.getDescription());
-        mTimeSpinner.setPrompt(editVitamin.getTime());;
+        mTimeSpinner.setPrompt(editVitamin.getTime());
         mQuantityEditText.setText(String.valueOf(editVitamin.getQuantity()));
         SharedPreferences mSharedPreferences = getSharedPreferences("myPrefs", MODE_PRIVATE);
 
@@ -55,9 +60,8 @@ public class EditVitaminActivity extends Activity {
                 int quantity = 0;
                 try {
                     quantity = Integer.parseInt(mQuantityEditText.getText().toString());
-                }
-                catch (Exception NumberFormatException){
-                    quantity =0;
+                } catch (Exception NumberFormatException) {
+                    quantity = 0;
                 }
 
 
@@ -66,7 +70,7 @@ public class EditVitaminActivity extends Activity {
                     return;
                 }
 
-                if (quantity == 0){
+                if (quantity == 0) {
                     mQuantityEditText.setError("Quantity is required");
                     return;
                 }
@@ -76,8 +80,7 @@ public class EditVitaminActivity extends Activity {
                 if (editVitamin.getName().equals(name)) {
                     // A vitamin with the same name already exists, prompt the user to enter a unique name
                     editVitamin.setName(name);
-                }
-                else {
+                } else {
                     if (existingVitamin != null) {
                         Toast.makeText(EditVitaminActivity.this, "A vitamin with the same name already exists. Please enter a unique name.", Toast.LENGTH_SHORT).show();
                         return;
@@ -105,15 +108,7 @@ public class EditVitaminActivity extends Activity {
     }
 
     private void getDatabase() {
-        mvstDAO = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DB_NAME)
-                .allowMainThreadQueries()
-                .build()
-                .getvstDAO();
-    }
-
-    public static Intent intentFactory(Context context) {
-        Intent intent = new Intent(context, AddVitaminActivity.class);
-        return intent;
+        mvstDAO = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DB_NAME).allowMainThreadQueries().build().getvstDAO();
     }
 }
 

@@ -1,6 +1,5 @@
 package nathan.csumb.vst;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -24,6 +23,12 @@ public class LoginActivity extends AppCompatActivity {
 
     private vstDAO mvstDAO;
     private SharedPreferences mSharedPreferences;
+
+    public static Intent intentFactory(Context context) {
+        Intent intent = new Intent(context, LoginActivity.class);
+
+        return intent;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,11 +104,5 @@ public class LoginActivity extends AppCompatActivity {
                 .allowMainThreadQueries()
                 .build()
                 .getvstDAO();
-    }
-
-    public static Intent intentFactory(Context context){
-        Intent intent = new Intent(context, LoginActivity.class);
-
-        return intent;
     }
 }
