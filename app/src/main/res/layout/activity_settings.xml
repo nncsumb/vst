@@ -24,21 +24,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/s_profilePicButton"
-        android:layout_width="176dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="@color/indigo"
-        android:elevation="2dp"
-        android:fontFamily="sans-serif-medium"
-        android:text="@string/add_profile_picture"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/settings"
-        app:layout_constraintStart_toStartOf="@+id/settings"
-        app:layout_constraintTop_toBottomOf="@+id/settings"  />
-
-    <com.google.android.material.button.MaterialButton
         android:id="@+id/s_deleteButton"
         android:layout_width="174dp"
         android:layout_height="70dp"
@@ -49,7 +34,7 @@
         android:text="@string/delete_account"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
-        app:layout_constraintTop_toBottomOf="@+id/s_profilePicButton"
+        app:layout_constraintTop_toBottomOf="@+id/settings"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

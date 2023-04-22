@@ -8,9 +8,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 import nathan.csumb.vst.db.AppDatabase;
 import nathan.csumb.vst.db.vstDAO;
@@ -20,10 +25,10 @@ public class LandingPageActivity extends AppCompatActivity {
     private TextView mWelcomeTextView;
     private Button mSettingsButton;
     private Button mAddVitaminButton;
+    private Button mTakeVitaminButton;
     private Button mVitaminStackButton;
     private Button mAdminAreaButton;
     private Button mLogoutButton;
-    private QuantityNotification mQuantityNotification;
 
     private vstDAO mvstDAO;
     private SharedPreferences mSharedPreferences;
@@ -40,12 +45,11 @@ public class LandingPageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing);
-        mQuantityNotification = new QuantityNotification(this);
-        mQuantityNotification.start();
         mWelcomeTextView = findViewById(R.id.welcomeTextView);
         mAdminAreaButton = findViewById(R.id.adminAreaButton);
         mSettingsButton = findViewById(R.id.settingsButton);
         mAddVitaminButton = findViewById(R.id.addVitaminButton);
+        mTakeVitaminButton = findViewById(R.id.takeVitaminButton);
         mVitaminStackButton = findViewById(R.id.vitaminStackButton);
         mLogoutButton = findViewById(R.id.logoutButton);
 
@@ -91,6 +95,37 @@ public class LandingPageActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        mTakeVitaminButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Get the current date and format it as a string
+                Date currentDate = new Date();
+                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+                String dateString = formatter.format(currentDate);
+
+                // Get the user id from shared preferences
+                int userId = mSharedPreferences.getInt("userId", -1);
+
+                // Check if the user has already clicked the button today
+                String lastClickDate = mSharedPreferences.getString("lastClickDate_" + userId, "");
+                if (dateString.equals(lastClickDate)) {
+                    // The user has already clicked the button today, show a message or do nothing
+                    Toast.makeText(LandingPageActivity.this, "You have already taken your vitamins today", Toast.LENGTH_SHORT).show();
+                } else {
+                    // The user has not clicked the button today, save the current date in shared preferences and do your action
+                    SharedPreferences.Editor editor = mSharedPreferences.edit();
+                    editor.putString("lastClickDate_" + userId, dateString);
+                    editor.apply();
+
+                    VitaminQuantityDecrement decrement = new VitaminQuantityDecrement(LandingPageActivity.this);
+                    decrement.start(userId);
+
+                    Toast.makeText(LandingPageActivity.this, "Vitamin taken!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
         mSettingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -35,6 +35,7 @@ public class VitaminListFragment extends Fragment {
     private int nameQtyCurrentState = 0;
     private SharedPreferences mSharedPreferences;
     private List<Vitamin> vitamins;
+    private QuantityNotification mQuantityNotification;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -45,7 +46,8 @@ public class VitaminListFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        mQuantityNotification = new QuantityNotification(getActivity());
+        mQuantityNotification.start();
         mSharedPreferences = getActivity().getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
         int userId = mSharedPreferences.getInt("userId", -1);
         Button backButton = view.findViewById(R.id.backButton);
@@ -201,6 +203,9 @@ public class VitaminListFragment extends Fragment {
         Button addVitaminButton = requireActivity().findViewById(R.id.addVitaminButton);
         addVitaminButton.setVisibility(View.VISIBLE);
 
+        Button takeVitaminButton = requireActivity().findViewById(R.id.takeVitaminButton);
+        takeVitaminButton.setVisibility(View.VISIBLE);
+
         Button editProfileButton = requireActivity().findViewById(R.id.settingsButton);
         editProfileButton.setVisibility(View.VISIBLE);
 
@@ -224,6 +229,9 @@ public class VitaminListFragment extends Fragment {
 
         Button addVitaminButton = requireActivity().findViewById(R.id.addVitaminButton);
         addVitaminButton.setVisibility(View.INVISIBLE);
+
+        Button takeVitaminButton = requireActivity().findViewById(R.id.takeVitaminButton);
+        takeVitaminButton.setVisibility(View.INVISIBLE);
 
         Button editProfileButton = requireActivity().findViewById(R.id.settingsButton);
         editProfileButton.setVisibility(View.INVISIBLE);

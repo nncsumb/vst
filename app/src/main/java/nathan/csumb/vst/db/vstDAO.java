@@ -59,6 +59,9 @@ public interface vstDAO {
     @Query("SELECT * FROM " + AppDatabase.VITAMIN_TABLE + " WHERE userId = :userId AND time = :timeString AND name = :nameString")
     Vitamin getVitaminsByName(int userId, String timeString, String nameString);
 
+    @Query("SELECT * FROM " + AppDatabase.VITAMIN_TABLE)
+    List<Vitamin> getAllVitamins();
+
     @Query("DELETE FROM " + AppDatabase.USER_TABLE)
     void deleteAllUsers();
 

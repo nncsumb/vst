@@ -20,7 +20,6 @@ public class SettingsActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        Button profilePicButton = findViewById(R.id.s_profilePicButton);
         Button DeleteUserButton = findViewById(R.id.s_deleteButton);
         Button cancelButton = findViewById(R.id.s_cancelButton);
 
@@ -30,14 +29,6 @@ public class SettingsActivity extends Activity {
                 Intent intent = LandingPageActivity.intentFactory(getApplicationContext());
                 startActivity(intent);
                 finish();
-            }
-        });
-
-        profilePicButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = LoginActivity.intentFactory(getApplicationContext());
-                startActivity(intent);
             }
         });
 
