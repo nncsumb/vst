@@ -7,30 +7,84 @@
     android:layout_height="match_parent"
     android:background="@drawable/logo"
     tools:context="nathan.csumb.vst.LandingPageActivity">
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/adminAreaButton"
+        android:layout_width="70dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp"
+        android:backgroundTint="@color/indigo"
+        android:elevation="2dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/admin"
+        android:textColor="#FFFFFF"
+        android:textSize="8sp"
+        android:visibility="visible"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/welcomeTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="40dp"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toBottomOf="@id/welcomeTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:backgroundTint="@color/white"/>
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/vitaminStackButton"
+        android:layout_width="176dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/indigo"
+        android:elevation="2dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/vitamin_stack"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@+id/welcomeTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/addVitaminButton"
+        android:layout_width="176dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/indigo"
+        android:elevation="2dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/add_vitamin"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@+id/vitaminStackButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/settingsButton"
         android:layout_width="176dp"
         android:layout_height="70dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="10dp"
         android:backgroundTint="@color/indigo"
         android:elevation="2dp"
         android:fontFamily="sans-serif-medium"
         android:text="@string/settings"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
-        app:layout_constraintTop_toBottomOf="@+id/welcomeTextView"
+        app:layout_constraintTop_toBottomOf="@+id/addVitaminButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -49,35 +103,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <TextView
-        android:id="@+id/adminTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
-        android:text="@string/admin_panel"
-        android:textColor="@color/black"
-        android:textSize="32sp"
-        android:textStyle="bold"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logoutButton" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/adminAreaButton"
-        android:layout_width="176dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="10dp"
-        android:backgroundTint="@color/indigo"
-        android:elevation="2dp"
-        android:fontFamily="sans-serif-medium"
-        android:text="@string/admin_controls"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@+id/adminTextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

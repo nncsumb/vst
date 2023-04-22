@@ -67,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void getDatabase() {
         mvstDAO = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DB_NAME)
+                .fallbackToDestructiveMigration()
                 .allowMainThreadQueries()
                 .build()
                 .getvstDAO();

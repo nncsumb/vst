@@ -76,6 +76,7 @@ public class LoginActivity extends AppCompatActivity {
                     SharedPreferences.Editor editor = mSharedPreferences.edit();
                     editor.putBoolean("isLoggedIn", true);
                     editor.putInt("userId", user.getUserId());
+                    editor.putBoolean("admin", user.isAdmin());
                     editor.apply();
 
                     Intent intent = LandingPageActivity.intentFactory(getApplicationContext());

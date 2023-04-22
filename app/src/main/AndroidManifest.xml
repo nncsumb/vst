@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -16,6 +17,8 @@
         <activity android:name="nathan.csumb.vst.LandingPageActivity" />
         <activity android:name="nathan.csumb.vst.SettingsActivity" />
         <activity android:name="nathan.csumb.vst.UserDeleteActivity" />
+        <activity android:name="nathan.csumb.vst.AddVitaminActivity" />
+        <activity android:name="nathan.csumb.vst.EditVitaminActivity" />
         <activity android:name="nathan.csumb.vst.AdminActivity" />
         <activity
             android:name="nathan.csumb.vst.MainActivity"

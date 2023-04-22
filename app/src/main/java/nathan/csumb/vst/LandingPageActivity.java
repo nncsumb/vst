@@ -18,8 +18,9 @@ import nathan.csumb.vst.db.vstDAO;
 public class LandingPageActivity extends AppCompatActivity {
 
     private TextView mWelcomeTextView;
-    private TextView mAdminTextView;
     private Button mSettingsButton;
+    private Button mAddVitaminButton;
+    private Button mVitaminStackButton;
     private Button mAdminAreaButton;
     private Button mLogoutButton;
 
@@ -34,9 +35,10 @@ public class LandingPageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_landing);
 
         mWelcomeTextView = findViewById(R.id.welcomeTextView);
-        mAdminTextView = findViewById(R.id.adminTextView);
         mAdminAreaButton = findViewById(R.id.adminAreaButton);
         mSettingsButton = findViewById(R.id.settingsButton);
+        mAddVitaminButton = findViewById(R.id.addVitaminButton);
+        mVitaminStackButton = findViewById(R.id.vitaminStackButton);
         mLogoutButton = findViewById(R.id.logoutButton);
 
         getDatabase();
@@ -56,10 +58,8 @@ public class LandingPageActivity extends AppCompatActivity {
                         mWelcomeTextView.setText("Welcome, " + mUser.getUserName() + "!");
 
                         if (mUser.isAdmin()) {
-                            mAdminTextView.setVisibility(View.VISIBLE);
                             mAdminAreaButton.setVisibility(View.VISIBLE);
                         } else {
-                            mAdminTextView.setVisibility(View.GONE);
                             mAdminAreaButton.setVisibility(View.GONE);
                         }
                     }
@@ -67,6 +67,25 @@ public class LandingPageActivity extends AppCompatActivity {
             }
         }).start();
 
+        mVitaminStackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Replace the existing fragment, if any, with the VitaminListFragment
+                VitaminListFragment vitaminListFragment = new VitaminListFragment();
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container, vitaminListFragment)
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
+        mAddVitaminButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = AddVitaminActivity.intentFactory(getApplicationContext());
+                startActivity(intent);
+                finish();
+            }
+        });
         mSettingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
