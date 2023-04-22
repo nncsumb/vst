@@ -7,7 +7,7 @@ import android.content.Context;
 
 import androidx.room.Room;
 import androidx.test.platform.app.InstrumentationRegistry;
-import androidx.test.core.app.ApplicationProvider;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -36,7 +36,7 @@ public class DatabaseTest {
 
     @Test
     public void insertAndGetUser() throws Exception {
-        User user = new User(false,"testUser", "testPassword");
+        User user = new User(false, "testUser", "testPassword");
         mvstDao.insert(user);
         User retrievedUser = mvstDao.getUserByUsername("testUser");
         assertEquals(user.getUserName(), retrievedUser.getUserName());
@@ -44,7 +44,7 @@ public class DatabaseTest {
 
     @Test
     public void updateAndGetUser() throws Exception {
-        User user = new User(false,"testUser", "testPassword");
+        User user = new User(false, "testUser", "testPassword");
         mvstDao.insert(user);
         User userToUpdate = mvstDao.getUserByUsername("testUser");
         userToUpdate.setPassword("newPassword");
@@ -55,7 +55,7 @@ public class DatabaseTest {
 
     @Test
     public void deleteAndGetUser() throws Exception {
-        User user = new User(false,"testUser", "testPassword");
+        User user = new User(false, "testUser", "testPassword");
         mvstDao.insert(user);
         mvstDao.delete(user);
         User retrievedUser = mvstDao.getUserByUserId(user.getUserId());
@@ -64,7 +64,7 @@ public class DatabaseTest {
 
     @Test
     public void insertAndGetVitamin() throws Exception {
-        Vitamin vitamin = new Vitamin(1,"testVitamin", "test", "Morning", 1);
+        Vitamin vitamin = new Vitamin(1, "testVitamin", "test", "Morning", 1);
         mvstDao.insert(vitamin);
         Vitamin retrievedVitamin = mvstDao.getVitaminsById(1);
         assertEquals(vitamin.getName(), retrievedVitamin.getName());
@@ -72,7 +72,7 @@ public class DatabaseTest {
 
     @Test
     public void updateAndGetVitamin() throws Exception {
-        Vitamin vitamin = new Vitamin(1,"testVitamin", "test", "Morning", 1);
+        Vitamin vitamin = new Vitamin(1, "testVitamin", "test", "Morning", 1);
         mvstDao.insert(vitamin);
         Vitamin vitaminToUpdate = mvstDao.getVitaminsById(1);
         vitaminToUpdate.setQuantity(50);
@@ -83,7 +83,7 @@ public class DatabaseTest {
 
     @Test
     public void deleteAndGetVitamin() throws Exception {
-        Vitamin vitamin = new Vitamin(1,"testVitamin", "test", "Morning", 1);
+        Vitamin vitamin = new Vitamin(1, "testVitamin", "test", "Morning", 1);
         mvstDao.insert(vitamin);
         mvstDao.delete(vitamin);
         Vitamin retrievedVitamin = mvstDao.getVitaminsById(vitamin.getVitaminId());

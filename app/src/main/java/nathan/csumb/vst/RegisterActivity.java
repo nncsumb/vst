@@ -24,9 +24,8 @@ public class RegisterActivity extends AppCompatActivity {
     private vstDAO mvstDAO;
 
     public static Intent intentFactory(Context context) {
-        Intent intent = new Intent(context, RegisterActivity.class);
 
-        return intent;
+        return new Intent(context, RegisterActivity.class);
     }
 
     @Override

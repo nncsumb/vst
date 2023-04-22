@@ -20,9 +20,8 @@ public class MainActivity extends AppCompatActivity {
     private vstDAO mvstDAO;
 
     public static Intent intentFactory(Context context) {
-        Intent intent = new Intent(context, MainActivity.class);
 
-        return intent;
+        return new Intent(context, MainActivity.class);
     }
 
     @Override
@@ -54,12 +53,12 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         }
-        // Set text view for animations
+
         TextView vstTextView = findViewById(R.id.vstTextView);
 
         Animation fadeInAnimation = AnimationUtils.loadAnimation(this, R.anim.fade_in);
         vstTextView.startAnimation(fadeInAnimation);
-        // Set button click listeners and animations
+
         Button loginButton = findViewById(R.id.mloginButton);
         Button createAccountButton = findViewById(R.id.createAccountButton);
         loginButton.startAnimation(fadeInAnimation);
@@ -83,10 +82,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void getDatabase() {
-        mvstDAO = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DB_NAME)
-                .fallbackToDestructiveMigration()
-                .allowMainThreadQueries()
-                .build()
-                .getvstDAO();
+        mvstDAO = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DB_NAME).fallbackToDestructiveMigration().allowMainThreadQueries().build().getvstDAO();
     }
 }

@@ -23,12 +23,7 @@ import nathan.csumb.vst.db.vstDAO;
 public class LandingPageActivity extends AppCompatActivity {
 
     private TextView mWelcomeTextView;
-    private Button mSettingsButton;
-    private Button mAddVitaminButton;
-    private Button mTakeVitaminButton;
-    private Button mVitaminStackButton;
     private Button mAdminAreaButton;
-    private Button mLogoutButton;
 
     private vstDAO mvstDAO;
     private SharedPreferences mSharedPreferences;
@@ -36,9 +31,8 @@ public class LandingPageActivity extends AppCompatActivity {
     private User mUser;
 
     public static Intent intentFactory(Context context) {
-        Intent intent = new Intent(context, LandingPageActivity.class);
 
-        return intent;
+        return new Intent(context, LandingPageActivity.class);
     }
 
     @Override
@@ -47,11 +41,11 @@ public class LandingPageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_landing);
         mWelcomeTextView = findViewById(R.id.welcomeTextView);
         mAdminAreaButton = findViewById(R.id.adminAreaButton);
-        mSettingsButton = findViewById(R.id.settingsButton);
-        mAddVitaminButton = findViewById(R.id.addVitaminButton);
-        mTakeVitaminButton = findViewById(R.id.takeVitaminButton);
-        mVitaminStackButton = findViewById(R.id.vitaminStackButton);
-        mLogoutButton = findViewById(R.id.logoutButton);
+        Button mSettingsButton = findViewById(R.id.settingsButton);
+        Button mAddVitaminButton = findViewById(R.id.addVitaminButton);
+        Button mTakeVitaminButton = findViewById(R.id.takeVitaminButton);
+        Button mVitaminStackButton = findViewById(R.id.vitaminStackButton);
+        Button mLogoutButton = findViewById(R.id.logoutButton);
 
         getDatabase();
         mSharedPreferences = getSharedPreferences("myPrefs", MODE_PRIVATE);

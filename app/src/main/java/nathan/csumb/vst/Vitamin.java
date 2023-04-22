@@ -1,5 +1,6 @@
 package nathan.csumb.vst;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -74,21 +75,11 @@ public class Vitamin {
         this.quantity = quantity;
     }
 
-//    public byte[] getVitamin_picture() {
-//        return vitamin_picture;
-//    }
-//
-//    public void setVitamin_picture(byte[] vitamin_picture) {
-//        this.vitamin_picture = vitamin_picture;
-//    }
 
+    @NonNull
     @Override
     public String toString() {
-        return "Vitamin{" +
-                "  mName='" + name + '\'' +
-                ", mDescription='" + description + '\'' +
-                ", quantity=" + quantity +
-                ", time=" + time +
+        return "Vitamin{" + "  mName='" + name + '\'' + ", mDescription='" + description + '\'' + ", quantity=" + quantity + ", time=" + time +
 //                ", vitamin_picture=" + Arrays.toString(vitamin_picture) +
                 '}';
     }

@@ -21,13 +21,11 @@ import nathan.csumb.vst.db.vstDAO;
 public class AdminActivity extends AppCompatActivity {
 
     private EditText mUsernameEditText;
-    private Button mConfirmButton;
     private vstDAO mvstDAO;
 
     public static Intent intentFactory(Context context) {
-        Intent intent = new Intent(context, AdminActivity.class);
 
-        return intent;
+        return new Intent(context, AdminActivity.class);
     }
 
     @Override
@@ -36,7 +34,7 @@ public class AdminActivity extends AppCompatActivity {
         setContentView(R.layout.activity_admin_controls);
 
         mUsernameEditText = findViewById(R.id.a_userNameEditText);
-        mConfirmButton = findViewById(R.id.a_confirmButton);
+        Button mConfirmButton = findViewById(R.id.a_confirmButton);
 
         getDatabase();
 

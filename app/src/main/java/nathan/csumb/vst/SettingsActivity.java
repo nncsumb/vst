@@ -10,9 +10,8 @@ import android.widget.Button;
 public class SettingsActivity extends Activity {
 
     public static Intent intentFactory(Context context) {
-        Intent intent = new Intent(context, SettingsActivity.class);
 
-        return intent;
+        return new Intent(context, SettingsActivity.class);
     }
 
     @Override

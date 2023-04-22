@@ -1,5 +1,6 @@
 package nathan.csumb.vst;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -8,9 +9,9 @@ import nathan.csumb.vst.db.AppDatabase;
 @Entity(tableName = AppDatabase.USER_TABLE)
 public class User {
 
+    private final boolean admin;
     @PrimaryKey(autoGenerate = true)
     private int mUserId;
-    private boolean admin;
     private String mUserName;
     private String mPassword;
 
@@ -44,13 +45,10 @@ public class User {
         mPassword = password;
     }
 
+    @NonNull
     @Override
     public String toString() {
-        return "User{" +
-                "mUserId=" + mUserId +
-                ", mUserName='" + mUserName + '\'' +
-                ", mPassword='" + mPassword + '\'' +
-                '}';
+        return "User{" + "mUserId=" + mUserId + ", mUserName='" + mUserName + '\'' + ", mPassword='" + mPassword + '\'' + '}';
     }
 
     public boolean isAdmin() {

@@ -23,11 +23,9 @@ public class EditVitaminActivity extends Activity {
     private EditText mDescriptionEditText;
     private Spinner mTimeSpinner;
     private EditText mQuantityEditText;
-    private int mVitaminId;
 
     public static Intent intentFactory(Context context) {
-        Intent intent = new Intent(context, AddVitaminActivity.class);
-        return intent;
+        return new Intent(context, AddVitaminActivity.class);
     }
 
     @Override
@@ -36,7 +34,7 @@ public class EditVitaminActivity extends Activity {
         setContentView(R.layout.activity_edit_vitamin);
 
         getDatabase();
-        mVitaminId = getIntent().getIntExtra("vitaminId", -1);
+        int mVitaminId = getIntent().getIntExtra("vitaminId", -1);
         Vitamin editVitamin = mvstDAO.getVitaminsById(mVitaminId);
         mNameEditText = findViewById(R.id.nameEditText);
         mDescriptionEditText = findViewById(R.id.descriptionEditText);
@@ -61,7 +59,6 @@ public class EditVitaminActivity extends Activity {
                 try {
                     quantity = Integer.parseInt(mQuantityEditText.getText().toString());
                 } catch (Exception NumberFormatException) {
-                    quantity = 0;
                 }
 
 
@@ -78,11 +75,11 @@ public class EditVitaminActivity extends Activity {
 
                 Vitamin existingVitamin = mvstDAO.getVitaminsByName(userId, time, name);
                 if (editVitamin.getName().equals(name)) {
-                    // A vitamin with the same name already exists, prompt the user to enter a unique name
+
                     editVitamin.setName(name);
                 } else {
                     if (existingVitamin != null) {
-                        Toast.makeText(EditVitaminActivity.this, "A vitamin with the same name already exists. Please enter a unique name.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(EditVitaminActivity.this, "A vitamin with the same name already exists.", Toast.LENGTH_SHORT).show();
                         return;
                     }
                 }

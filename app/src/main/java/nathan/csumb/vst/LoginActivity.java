@@ -25,9 +25,8 @@ public class LoginActivity extends AppCompatActivity {
     private SharedPreferences mSharedPreferences;
 
     public static Intent intentFactory(Context context) {
-        Intent intent = new Intent(context, LoginActivity.class);
 
-        return intent;
+        return new Intent(context, LoginActivity.class);
     }
 
     @Override
@@ -100,9 +99,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void getDatabase() {
-        mvstDAO = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DB_NAME)
-                .allowMainThreadQueries()
-                .build()
-                .getvstDAO();
+        mvstDAO = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DB_NAME).allowMainThreadQueries().build().getvstDAO();
     }
 }

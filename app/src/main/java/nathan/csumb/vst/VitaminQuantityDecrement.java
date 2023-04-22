@@ -35,9 +35,6 @@ public class VitaminQuantityDecrement {
     }
 
     private void getDatabase() {
-        mvstDAO = Room.databaseBuilder(mContext, AppDatabase.class, AppDatabase.DB_NAME)
-                .allowMainThreadQueries()
-                .build()
-                .getvstDAO();
+        mvstDAO = Room.databaseBuilder(mContext, AppDatabase.class, AppDatabase.DB_NAME).allowMainThreadQueries().build().getvstDAO();
     }
 }

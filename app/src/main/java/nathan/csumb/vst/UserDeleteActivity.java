@@ -22,8 +22,12 @@ import nathan.csumb.vst.db.vstDAO;
 public class UserDeleteActivity extends AppCompatActivity {
 
     private EditText mUsernameEditText;
-    private Button mConfirmButton;
     private vstDAO mvstDAO;
+
+    public static Intent intentFactory(Context context) {
+
+        return new Intent(context, UserDeleteActivity.class);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +35,7 @@ public class UserDeleteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user_delete);
 
         mUsernameEditText = findViewById(R.id.u_userNameEditText);
-        mConfirmButton = findViewById(R.id.u_confirmButton);
+        Button mConfirmButton = findViewById(R.id.u_confirmButton);
 
         getDatabase();
 
@@ -84,37 +88,33 @@ public class UserDeleteActivity extends AppCompatActivity {
                             @Override
                             public void run() {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(UserDeleteActivity.this);
-                                builder.setTitle("Confirm Deletion")
-                                        .setMessage("Are you sure you want to delete " + username + "'s account?")
-                                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
-                                                mvstDAO.delete(user);
+                                builder.setTitle("Confirm Deletion").setMessage("Are you sure you want to delete " + username + "'s account?").setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        mvstDAO.delete(user);
 
-                                                SharedPreferences sharedPreferences = getSharedPreferences("myPrefs", MODE_PRIVATE);
-                                                int userId = sharedPreferences.getInt("userId", -1);
+                                        SharedPreferences sharedPreferences = getSharedPreferences("myPrefs", MODE_PRIVATE);
+                                        int userId = sharedPreferences.getInt("userId", -1);
 
-                                                if (user.getUserId() == userId) {
-                                                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                                                    editor.putBoolean("isLoggedIn", false);
-                                                    editor.putInt("userId", -1);
-                                                    editor.apply();
+                                        if (user.getUserId() == userId) {
+                                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                                            editor.putBoolean("isLoggedIn", false);
+                                            editor.putInt("userId", -1);
+                                            editor.apply();
 
-                                                    Intent intent = MainActivity.intentFactory(getApplicationContext());
-                                                    startActivity(intent);
-                                                    finish();
-                                                } else {
-                                                    Toast.makeText(getApplicationContext(), "User account deleted", Toast.LENGTH_SHORT).show();
-                                                }
-                                            }
-                                        })
-                                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
-                                                dialog.dismiss();
-                                            }
-                                        })
-                                        .show();
+                                            Intent intent = MainActivity.intentFactory(getApplicationContext());
+                                            startActivity(intent);
+                                            finish();
+                                        } else {
+                                            Toast.makeText(getApplicationContext(), "User account deleted", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.dismiss();
+                                    }
+                                }).show();
                             }
                         });
                     }
@@ -123,18 +123,8 @@ public class UserDeleteActivity extends AppCompatActivity {
         });
     }
 
-
     private void getDatabase() {
-        mvstDAO = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DB_NAME)
-                .allowMainThreadQueries()
-                .build()
-                .getvstDAO();
-    }
-
-    public static Intent intentFactory(Context context){
-        Intent intent = new Intent(context, UserDeleteActivity.class);
-
-        return intent;
+        mvstDAO = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DB_NAME).allowMainThreadQueries().build().getvstDAO();
     }
 }
 

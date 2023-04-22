@@ -26,8 +26,7 @@ public class AddVitaminActivity extends AppCompatActivity {
     private EditText mQuantityEditText;
 
     public static Intent intentFactory(Context context) {
-        Intent intent = new Intent(context, AddVitaminActivity.class);
-        return intent;
+        return new Intent(context, AddVitaminActivity.class);
     }
 
     @Override
@@ -56,7 +55,6 @@ public class AddVitaminActivity extends AppCompatActivity {
                 try {
                     quantity = Integer.parseInt(mQuantityEditText.getText().toString());
                 } catch (Exception NumberFormatException) {
-                    quantity = 0;
                 }
 
 
@@ -71,8 +69,8 @@ public class AddVitaminActivity extends AppCompatActivity {
                 }
                 Vitamin existingVitamin = mvstDAO.getVitaminsByName(userId, time, name);
                 if (existingVitamin != null) {
-                    // A vitamin with the same name already exists, prompt the user to enter a unique name
-                    Toast.makeText(AddVitaminActivity.this, "A vitamin with the same name already exists. Please enter a unique name.", Toast.LENGTH_SHORT).show();
+
+                    Toast.makeText(AddVitaminActivity.this, "A vitamin with the same name already exists", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 Vitamin vitamin = new Vitamin(userId, name, description, time, quantity);

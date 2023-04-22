@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,50 +29,50 @@ import nathan.csumb.vst.db.vstDAO;
 public class VitaminListFragment extends Fragment {
 
     private RecyclerView recyclerView;
-    private VitaminAdapter adapter;
     private vstDAO mvstDAO;
     private int timeCurrentState = 0;
 
     private int nameQtyCurrentState = 0;
     private SharedPreferences mSharedPreferences;
     private List<Vitamin> vitamins;
-    private QuantityNotification mQuantityNotification;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         return inflater.inflate(R.layout.activity_vitamin_list, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mQuantityNotification = new QuantityNotification(getActivity());
+        QuantityNotification mQuantityNotification = new QuantityNotification(getActivity());
         mQuantityNotification.start();
-        mSharedPreferences = getActivity().getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
+
+        mSharedPreferences = requireActivity().getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
         int userId = mSharedPreferences.getInt("userId", -1);
         Button backButton = view.findViewById(R.id.backButton);
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Navigate back to the previous screen
+
                 requireActivity().onBackPressed();
 
             }
         });
-        // Initialize the RecyclerView
+
         recyclerView = view.findViewById(R.id.recyclerView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(requireActivity());
         recyclerView.setLayoutManager(layoutManager);
 
-        // Load data from the database using DAO
+
         getDatabase();
-        // Replace this with the appropriate user ID
+
         render(0, userId, 0);
         MaterialButton timeFilterbutton = view.findViewById(R.id.timeFilterButton);
 
         timeFilterbutton.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View v) {
                 timeCurrentState++;
@@ -167,15 +168,15 @@ public class VitaminListFragment extends Fragment {
         }
 
         VitaminAdapter.OnVitaminClickListener onVitaminClickListener = position -> {
-            // Handle the click event and navigate to the vitamin details activity
+
             Vitamin vitamin = vitamins.get(position);
             Intent intent = new Intent(requireActivity(), EditVitaminActivity.class);
             intent.putExtra("vitaminId", vitamin.getVitaminId());
             startActivity(intent);
         };
 
-        // Use requireActivity() instead of "this" for a fragment
-        adapter = new VitaminAdapter(requireActivity(), vitamins, onVitaminClickListener);
+
+        VitaminAdapter adapter = new VitaminAdapter(requireActivity(), vitamins, onVitaminClickListener);
         recyclerView.setAdapter(adapter);
     }
 

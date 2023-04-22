@@ -1,5 +1,6 @@
 package nathan.csumb.vst;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
 import android.text.Spannable;
@@ -33,6 +34,7 @@ public class VitaminAdapter extends RecyclerView.Adapter<VitaminAdapter.VitaminV
         return new VitaminViewHolder(view, onVitaminClickListener);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull VitaminViewHolder holder, int position) {
         Vitamin vitamin = vitamins.get(position);
