@@ -7,25 +7,25 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:background="@drawable/logo"
-    tools:context="nathan.csumb.vst.LoginActivity">
+    tools:context="nathan.csumb.vst.EditVitaminActivity">
 
     <TextView
-        android:id="@+id/loginTextView"
+        android:id="@+id/vitaminView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="72dp"
-        android:text="@string/login"
+        android:text="@string/edit_vitamin"
         android:textColor="@color/black"
         android:textSize="32sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/userNameInputLayout"
+        app:layout_constraintBottom_toTopOf="@+id/nameInputLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/userNameInputLayout"
+        android:id="@+id/nameInputLayout"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -36,23 +36,23 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginTextView">
+        app:layout_constraintTop_toBottomOf="@+id/vitaminView">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/userNameEditText"
+            android:id="@+id/nameEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="#000000"
             android:textSize="18sp"
             android:fontFamily="sans-serif-medium"
-            android:hint="@string/username"
+            android:hint="@string/vitamin_name"
             android:inputType="text"
             android:elevation="2dp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/passwordInputLayout"
+        android:id="@+id/descriptionInputLayout"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -60,38 +60,87 @@
         app:boxStrokeWidth="1dp"
         app:boxStrokeColor="@color/black"
         app:hintTextAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
-        app:passwordToggleEnabled="true"
-        app:passwordToggleTint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userNameInputLayout">
+        app:layout_constraintTop_toBottomOf="@+id/nameInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/passwordEditText"
+            android:id="@+id/descriptionEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="#000000"
             android:textSize="18sp"
             android:fontFamily="sans-serif-medium"
-            android:hint="@string/password"
-            android:inputType="textPassword"
+            android:hint="@string/description"
+            android:inputType="text"
             android:elevation="2dp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/quantityInputLayout"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:boxBackgroundColor="#FFFFFF"
+        app:boxStrokeWidth="1dp"
+        app:boxStrokeColor="@color/black"
+        app:hintTextAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/descriptionInputLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/quantityEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:fontFamily="sans-serif-medium"
+            android:hint="@string/quantity"
+            android:inputType="number"
+            android:elevation="2dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/timeInputLayout"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:boxBackgroundColor="#FFFFFF"
+        android:background="@color/white"
+        app:boxStrokeWidth="1dp"
+        app:boxStrokeColor="@color/black"
+        app:hintTextAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/quantityInputLayout">
+
+        <Spinner
+            android:id="@+id/timeSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:prompt="@string/time_prompt"
+            android:entries="@array/time_options" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/loginButton"
+        android:id="@+id/submitButton"
         android:layout_width="176dp"
         android:layout_height="70dp"
         android:layout_marginTop="10dp"
         android:backgroundTint="@color/indigo"
         android:elevation="2dp"
         android:fontFamily="sans-serif-medium"
-        android:text="@string/login"
+        android:text="@string/submit"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
-        app:layout_constraintTop_toBottomOf="@+id/passwordInputLayout"
+        app:layout_constraintTop_toBottomOf="@+id/timeInputLayout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -106,7 +155,7 @@
         android:text="@string/cancel"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
-        app:layout_constraintTop_toBottomOf="@+id/loginButton"
+        app:layout_constraintTop_toBottomOf="@+id/submitButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

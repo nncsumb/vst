@@ -1,6 +1,5 @@
 package nathan.csumb.vst;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -24,6 +23,11 @@ public class LoginActivity extends AppCompatActivity {
 
     private vstDAO mvstDAO;
     private SharedPreferences mSharedPreferences;
+
+    public static Intent intentFactory(Context context) {
+
+        return new Intent(context, LoginActivity.class);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +80,7 @@ public class LoginActivity extends AppCompatActivity {
                     SharedPreferences.Editor editor = mSharedPreferences.edit();
                     editor.putBoolean("isLoggedIn", true);
                     editor.putInt("userId", user.getUserId());
+                    editor.putBoolean("admin", user.isAdmin());
                     editor.apply();
 
                     Intent intent = LandingPageActivity.intentFactory(getApplicationContext());
@@ -85,7 +90,7 @@ public class LoginActivity extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(LoginActivity.this, "Invalid username or password.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Invalid username or password.", Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
@@ -94,15 +99,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void getDatabase() {
-        mvstDAO = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DB_NAME)
-                .allowMainThreadQueries()
-                .build()
-                .getvstDAO();
-    }
-
-    public static Intent intentFactory(Context context){
-        Intent intent = new Intent(context, LoginActivity.class);
-
-        return intent;
+        mvstDAO = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DB_NAME).allowMainThreadQueries().build().getvstDAO();
     }
 }

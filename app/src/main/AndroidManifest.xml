@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -11,8 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VST"
         tools:targetApi="31">
+        <service android:name=".QuantityNotification" />
         <activity android:name="nathan.csumb.vst.LoginActivity" />
+        <activity android:name="nathan.csumb.vst.RegisterActivity" />
         <activity android:name="nathan.csumb.vst.LandingPageActivity" />
+        <activity android:name="nathan.csumb.vst.SettingsActivity" />
+        <activity android:name="nathan.csumb.vst.UserDeleteActivity" />
+        <activity android:name="nathan.csumb.vst.AddVitaminActivity" />
+        <activity android:name="nathan.csumb.vst.EditVitaminActivity" />
+        <activity android:name="nathan.csumb.vst.AdminActivity" />
         <activity
             android:name="nathan.csumb.vst.MainActivity"
             android:exported="true">
