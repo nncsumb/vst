@@ -16,7 +16,6 @@ public class Vitamin {
     private String description;
     private String time;
     private int quantity;
-//    public byte[] vitamin_picture;
 
     public Vitamin(int userId, String name, String description, String time, int quantity) {
         this.userId = userId;

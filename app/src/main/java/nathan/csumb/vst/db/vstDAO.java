@@ -10,6 +10,7 @@ import java.util.List;
 
 import nathan.csumb.vst.User;
 import nathan.csumb.vst.Vitamin;
+import nathan.csumb.vst.Water;
 
 @Dao
 public interface vstDAO {
@@ -62,11 +63,25 @@ public interface vstDAO {
     @Query("SELECT * FROM " + AppDatabase.VITAMIN_TABLE)
     List<Vitamin> getAllVitamins();
 
+    @Insert
+    void insert(Water... Water);
+
+    @Update
+    void update(Water... Water);
+
+    @Delete
+    void delete(Water Water);
+
+    @Query("SELECT * FROM " + AppDatabase.WATER_TABLE + " WHERE userId = :userId")
+    Water getWater(int userId);
+
     @Query("DELETE FROM " + AppDatabase.USER_TABLE)
     void deleteAllUsers();
 
     @Query("DELETE FROM " + AppDatabase.VITAMIN_TABLE)
     void deleteAllVitamins();
 
+    @Query("DELETE FROM " + AppDatabase.WATER_TABLE)
+    void deleteAllWaters();
 
 }

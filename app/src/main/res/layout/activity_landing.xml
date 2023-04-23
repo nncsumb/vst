@@ -89,6 +89,53 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <LinearLayout
+        android:id="@+id/waterButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/takeVitaminButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/drinkWater"
+            android:layout_width="130dp"
+            android:layout_height="70dp"
+            android:layout_marginEnd="10dp"
+            android:backgroundTint="@color/indigo"
+            android:elevation="2dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/drink_water"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/resetWater"
+            android:layout_width="130dp"
+            android:layout_height="70dp"
+            android:backgroundTint="@color/indigo"
+            android:elevation="2dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/reset_water"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/waterTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:textAllCaps="true"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/waterButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/settingsButton"
         android:layout_width="176dp"
@@ -100,7 +147,7 @@
         android:text="@string/settings"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
-        app:layout_constraintTop_toBottomOf="@+id/takeVitaminButton"
+        app:layout_constraintTop_toBottomOf="@+id/waterTextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

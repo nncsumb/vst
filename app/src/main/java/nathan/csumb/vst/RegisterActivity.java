@@ -93,14 +93,12 @@ public class RegisterActivity extends AppCompatActivity {
                     }
                 });
 
-                // Log in the user after registration
                 SharedPreferences mSharedPreferences = getSharedPreferences("myPrefs", MODE_PRIVATE);
                 SharedPreferences.Editor editor = mSharedPreferences.edit();
                 editor.putBoolean("isLoggedIn", true);
                 editor.putInt("userId", userId);
                 editor.apply();
 
-                // Navigate to LandingPageActivity
                 Intent intent = LandingPageActivity.intentFactory(getApplicationContext());
                 startActivity(intent);
                 finish();

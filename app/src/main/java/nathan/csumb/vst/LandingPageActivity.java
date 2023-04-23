@@ -22,8 +22,6 @@ import nathan.csumb.vst.db.vstDAO;
 
 public class LandingPageActivity extends AppCompatActivity {
 
-    private TextView mWelcomeTextView;
-    private Button mAdminAreaButton;
 
     private vstDAO mvstDAO;
     private SharedPreferences mSharedPreferences;
@@ -39,12 +37,15 @@ public class LandingPageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing);
-        mWelcomeTextView = findViewById(R.id.welcomeTextView);
-        mAdminAreaButton = findViewById(R.id.adminAreaButton);
+        TextView mWelcomeTextView = findViewById(R.id.welcomeTextView);
+        TextView mWaterTextView = findViewById(R.id.waterTextView);
+        Button mAdminAreaButton = findViewById(R.id.adminAreaButton);
         Button mSettingsButton = findViewById(R.id.settingsButton);
         Button mAddVitaminButton = findViewById(R.id.addVitaminButton);
         Button mTakeVitaminButton = findViewById(R.id.takeVitaminButton);
         Button mVitaminStackButton = findViewById(R.id.vitaminStackButton);
+        Button mDrinkWaterButton = findViewById(R.id.drinkWater);
+        Button mResetWaterButton = findViewById(R.id.resetWater);
         Button mLogoutButton = findViewById(R.id.logoutButton);
 
         getDatabase();
@@ -62,6 +63,16 @@ public class LandingPageActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         mWelcomeTextView.setText("Welcome, " + mUser.getUserName() + "!");
+
+                        if (mvstDAO.getWater(userId) == null) {
+                            Water newWater = new Water(userId, 0);
+                            mvstDAO.insert(newWater);
+                        }
+
+                        Water water = mvstDAO.getWater(userId);
+
+                        int startQuantity = water.getGlassQuantity();
+                        mWaterTextView.setText("Glasses: " + startQuantity + "💧");
 
                         if (mUser.isAdmin()) {
                             mAdminAreaButton.setVisibility(View.VISIBLE);
@@ -117,6 +128,61 @@ public class LandingPageActivity extends AppCompatActivity {
 
                     Toast.makeText(LandingPageActivity.this, "Vitamin taken!", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        mDrinkWaterButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (mvstDAO.getWater(userId) == null) {
+                            Water newWater = new Water(userId, 0);
+                            mvstDAO.insert(newWater);
+                        }
+
+                        Water water = mvstDAO.getWater(userId);
+
+                        int newQuantity = water.getGlassQuantity() + 1;
+
+                        water.setGlassQuantity(newQuantity);
+                        mvstDAO.update(water);
+
+                        runOnUiThread(new Runnable() {
+                            @SuppressLint("SetTextI18n")
+                            @Override
+                            public void run() {
+                                mWaterTextView.setText("Glasses: " + newQuantity + "💧");
+                            }
+                        });
+                    }
+                }).start();
+            }
+        });
+
+        mResetWaterButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        int userId = mSharedPreferences.getInt("userId", -1);
+
+                        Water water = mvstDAO.getWater(userId);
+
+                        water.setGlassQuantity(0);
+                        mvstDAO.update(water);
+
+                        runOnUiThread(new Runnable() {
+                            @SuppressLint("SetTextI18n")
+                            @Override
+                            public void run() {
+                                mWaterTextView.setText("Glasses: 0" + "💧");
+                            }
+                        });
+                    }
+                }).start();
             }
         });
 

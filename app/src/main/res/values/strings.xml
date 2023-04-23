@@ -34,6 +34,8 @@
     <string name="name">Name</string>
     <string name="filters">Filters</string>
     <string name="take_vitamins">Take Vitamins</string>
+    <string name="drink_water">Drink Water</string>
+    <string name="reset_water">Reset Water</string>
     <string-array name="time_options">
         <item>Morning</item>
         <item>Afternoon</item>
