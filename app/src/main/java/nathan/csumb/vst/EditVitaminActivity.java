@@ -89,7 +89,7 @@ public class EditVitaminActivity extends Activity {
                 editVitamin.setTime(time);
                 mvstDAO.update(editVitamin);
 
-                Toast.makeText(EditVitaminActivity.this, "Vitamin added successfully", Toast.LENGTH_SHORT).show();
+                Toast.makeText(EditVitaminActivity.this, "Vitamin edited successfully", Toast.LENGTH_SHORT).show();
             }
         });
 
