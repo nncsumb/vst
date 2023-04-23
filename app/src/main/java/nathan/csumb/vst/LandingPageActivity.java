@@ -63,6 +63,12 @@ public class LandingPageActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         mWelcomeTextView.setText("Welcome, " + mUser.getUserName() + "!");
+
+                        if (mvstDAO.getWater(userId) == null) {
+                            Water newWater = new Water(userId, 0);
+                            mvstDAO.insert(newWater);
+                        }
+
                         Water water = mvstDAO.getWater(userId);
 
                         int startQuantity = water.getGlassQuantity();
@@ -131,7 +137,7 @@ public class LandingPageActivity extends AppCompatActivity {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        if (mvstDAO.getWater(userId) == null){
+                        if (mvstDAO.getWater(userId) == null) {
                             Water newWater = new Water(userId, 0);
                             mvstDAO.insert(newWater);
                         }
@@ -172,7 +178,7 @@ public class LandingPageActivity extends AppCompatActivity {
                             @SuppressLint("SetTextI18n")
                             @Override
                             public void run() {
-                                mWaterTextView.setText("Glasses: 0"+ "💧");
+                                mWaterTextView.setText("Glasses: 0" + "💧");
                             }
                         });
                     }

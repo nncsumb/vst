@@ -201,6 +201,15 @@ public class VitaminListFragment extends Fragment {
         TextView welcomeTextView = requireActivity().findViewById(R.id.welcomeTextView);
         welcomeTextView.setVisibility(View.VISIBLE);
 
+        TextView waterTextView = requireActivity().findViewById(R.id.waterTextView);
+        waterTextView.setVisibility(View.VISIBLE);
+
+        Button drinkButton = requireActivity().findViewById(R.id.drinkWater);
+        drinkButton.setVisibility(View.VISIBLE);
+
+        Button resetButton = requireActivity().findViewById(R.id.resetWater);
+        resetButton.setVisibility(View.VISIBLE);
+
         Button addVitaminButton = requireActivity().findViewById(R.id.addVitaminButton);
         addVitaminButton.setVisibility(View.VISIBLE);
 
@@ -227,6 +236,15 @@ public class VitaminListFragment extends Fragment {
     private void hideButtons() {
         TextView welcomeTextView = requireActivity().findViewById(R.id.welcomeTextView);
         welcomeTextView.setVisibility(View.INVISIBLE);
+
+        TextView waterTextView = requireActivity().findViewById(R.id.waterTextView);
+        waterTextView.setVisibility(View.INVISIBLE);
+
+        Button drinkButton = requireActivity().findViewById(R.id.drinkWater);
+        drinkButton.setVisibility(View.INVISIBLE);
+
+        Button resetButton = requireActivity().findViewById(R.id.resetWater);
+        resetButton.setVisibility(View.INVISIBLE);
 
         Button addVitaminButton = requireActivity().findViewById(R.id.addVitaminButton);
         addVitaminButton.setVisibility(View.INVISIBLE);
